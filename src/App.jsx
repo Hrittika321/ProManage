@@ -3,7 +3,6 @@ import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Body from "./components/Body/Body";
 import Footer from "./components/Footer/Footer";
-import Landing from "./components/Landing/Landing";
 function App() {
   return (
     <>
@@ -17,7 +16,6 @@ function App() {
 
         <Footer />
       </div>
-      {/* <Landing/> */}
     </>
   );
 }

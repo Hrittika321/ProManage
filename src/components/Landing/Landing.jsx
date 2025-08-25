@@ -3,7 +3,7 @@ import React from "react";
 function Landing() {
   return (
     <>
-      <div className="h-screen w-full bg-[url('./assets/landing_bg.jpg')] bg-cover bg-center">
+      <div className="fixed h-screen w-full bg-[url('./assets/landing_bg.jpg')] bg-cover bg-center">
         <div className="h-full w-full bg-black/40 flex items-start pt-8 pl-8 justify-between">
           <h1 className="text-white text-5xl font-bold">
             Welcome to ProManage
