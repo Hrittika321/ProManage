@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { useTasks } from "../../context/TaskContext";
+import { useNavigate } from "react-router";
 
 export default function AddTaskForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [type, setType] = useState("Icebreak");
+  const [type, setType] = useState("");
+  const navigate = useNavigate();
 
   const { addTask } = useTasks();
 
   function submitHandler(e) {
     e.preventDefault();
-    addTask({ title, description, type });
+    addTask({ id:Date.now(), title, description, type });
     setTitle("");
     setDescription("");
-    setType("Icebreak");
+    setType("");
+    navigate("/tasks")
   }
 
   return (
