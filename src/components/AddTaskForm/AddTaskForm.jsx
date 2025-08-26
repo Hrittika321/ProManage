@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { useTasks } from "../../context/TaskContext";
+
 export default function AddTaskForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [type, setType] = useState("Icebreak");
 
+  const { addTask } = useTasks();
+
   function submitHandler(e) {
     e.preventDefault();
-    useTasks({ title, description, type });
+    addTask({ title, description, type });
+    setTitle("");
+    setDescription("");
+    setType("Icebreak");
   }
 
   return (
