@@ -1,18 +1,11 @@
-import { useState } from "react";
 import { useTasks } from "../../context/TaskContext";
 
 export default function Tasks() {
   const { tasks, setTasks, addTask, ediTask, deleteTask, toggleComplete } =
     useTasks();
 
-  const [checked, setChecked] = useState(false);
-
   const handleChange = (id) => {
-    setChecked(true);
     toggleComplete(id);
-    setTimeout(() => {
-      setChecked(false);
-    }, 300);
   };
 
   return (
@@ -30,17 +23,16 @@ export default function Tasks() {
               key={index}
               className="bg-white rounded-2xl shadow-md p-6 border border-gray-200"
             >
-              <div className="flex items-center mb-4">
-                <input
-                  type="checkbox"
-                  className="mr-2 w-4 h-4"
-                  key={task.id}
-                  checked={checked}
-                  onChange={() => {
-                    handleChange(task.id);
-                  }}
-                />
+              <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-semibold">{task.title}</h3>
+                {task.type !== "Completed" && (
+                  <button
+                    className="bg-green-500 hover:bg-green-600 text-white text-sm px-3 py-1 rounded"
+                    onClick={() => handleChange(task.id)}
+                  >
+                    Done
+                  </button>
+                )}
               </div>
 
               <p className="text-gray-600 mb-4">{task.description}</p>
