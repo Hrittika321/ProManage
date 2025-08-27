@@ -5,7 +5,15 @@ export default function Tasks() {
   const { tasks, setTasks, addTask, ediTask, deleteTask, toggleComplete } =
     useTasks();
 
-  const [check,setCheck]=useState(null);
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (id) => {
+    setChecked(true);
+    toggleComplete(id);
+    setTimeout(() => {
+      setChecked(false);
+    }, 300);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
@@ -26,8 +34,10 @@ export default function Tasks() {
                 <input
                   type="checkbox"
                   className="mr-2 w-4 h-4"
+                  key={task.id}
+                  checked={checked}
                   onChange={() => {
-                    toggleComplete(task.id);
+                    handleChange(task.id);
                   }}
                 />
                 <h3 className="text-xl font-semibold">{task.title}</h3>
