@@ -11,11 +11,12 @@ function Landing() {
                 Welcome to ProManage
               </h1>
               <div className="space-x-6 pr-10">
-                <button className="px-6 py-3 text-lg font-semibold rounded-xl bg-amber-50 border-2 border-blue-800 text-blue-800 hover:bg-blue-100 shadow-md">
-                  <NavLink to="/landing/login">Login</NavLink>
-                </button>
+                
                 <button className="px-6 py-3 text-lg font-semibold rounded-xl bg-blue-800 text-white hover:bg-blue-900 shadow-md">
                   <NavLink to="/landing/register">Register</NavLink>
+                </button>
+                <button className="px-6 py-3 text-lg font-semibold rounded-xl bg-amber-50 border-2 border-blue-800 text-blue-800 hover:bg-blue-100 shadow-md">
+                  <NavLink to="/landing/login">Login</NavLink>
                 </button>
               </div>
             </div>

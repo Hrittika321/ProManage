@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTasks } from "../../context/TaskContext";
 import { useNavigate } from "react-router";
+import { back, cur, ice } from "../../constants";
 
 export default function AddTaskForm() {
   const [title, setTitle] = useState("");
@@ -74,7 +75,7 @@ export default function AddTaskForm() {
               name="task-type"
               id="icebreak"
               value="Icebreak"
-              checked={type === "Icebreak"}
+              checked={type === ice}
               onChange={(e) => setType(e.target.value)}
             />
             <label htmlFor="icebreak"> Icebreak</label>
@@ -84,7 +85,7 @@ export default function AddTaskForm() {
               name="task-type"
               id="backlog"
               value="Backlog"
-              checked={type === "Backlog"}
+              checked={type === back}
               onChange={(e) => setType(e.target.value)}
             />
             <label htmlFor="backlog"> Backlog</label>
@@ -93,8 +94,8 @@ export default function AddTaskForm() {
               type="radio"
               name="task-type"
               id="current"
-              value="Current"
-              checked={type === "Current"}
+              value={cur}
+              checked={type === cur}
               onChange={(e) => setType(e.target.value)}
             />
             <label htmlFor="current"> Current</label>

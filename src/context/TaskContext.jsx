@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { back, ice } from "../constants";
 
 export const TaskContext = createContext();
 
@@ -16,7 +17,6 @@ export function TaskProvider({ children }) {
     if (storedTasks) {
       setTasks(JSON.parse(storedTasks));
     }
-    console.log(tasks, "updated tasks on refresh");
   }, []);
 
   useEffect(() => {
@@ -39,8 +39,8 @@ export function TaskProvider({ children }) {
   setTasks((prev) =>
     prev.map((task) => {
       if (task.id === id) {
-        if (task.type === "Icebreak") return { ...task, type: "Backlog" };
-        else if (task.type === "Backlog") return { ...task, type: "Current" };
+        if (task.type === ice ) return { ...task, type: "Backlog" };
+        else if (task.type === back) return { ...task, type: "Current" };
         else return { ...task, type: "Completed" };
       }
       return task;

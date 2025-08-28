@@ -1,5 +1,13 @@
 import { createContext, useContext, useState } from "react";
 
+// users=[
+//   {
+//     username:
+//     email:
+//     password:
+//   }
+// ]
+
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -19,9 +27,14 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem("users", JSON.stringify(users));
   }, [users]);
 
-
-  const addUser = (user) => {};
-  const findUser = (id) => {};
+  const addUser = (user) => {
+    setUsers((prev) => [...prev, user]);
+  };
+  
+  const findUser = (email) => {
+    const user = users.filter((user) => user.email === email);
+    return user;
+  };
 
   return (
     <UserContext.Provider value={{ users, setUsers, addUser, findUser }}>
