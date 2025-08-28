@@ -21,6 +21,7 @@ import Login from "./components/Landing/Login.jsx";
 import Register from "./components/Landing/Register.jsx";
 
 import { TaskProvider } from "./context/TaskContext.jsx";
+import { UserProvider } from "./context/UserContext.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,7 +31,7 @@ const router = createBrowserRouter(
         <Route path="register" element={<Register />} />
       </Route>
       <Route path="" element={<Body />} />
-      <Route path="about" element ={<About />} />
+      <Route path="about" element={<About />} />
       <Route path="tasks" element={<Tasks />} />
       <Route path="contact" element={<Contact />} />
       <Route path="help" element={<Help />} />
@@ -43,7 +44,9 @@ const router = createBrowserRouter(
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <TaskProvider>
-      <RouterProvider router={router} />
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
     </TaskProvider>
   </StrictMode>
 );

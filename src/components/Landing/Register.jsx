@@ -1,11 +1,19 @@
 import React, { useState } from "react";
+import { useUsers } from "../../context/UserContext";
+import { useNavigate } from "react-router";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onclickHandler = () => {};
+  const { addUser } = useUsers();
+  
+  const onclickHandler = () => {
+    addUser({ id: Date.now(), username, email, password });
+    navigate("/");
+  };
 
   return (
     <div className=" h-full w-400 flex items-center justify-baseline ml-40">
@@ -15,13 +23,15 @@ const Register = () => {
         <form>
           <div className="mb-4">
             <label className="block text-gray-700 mb-2" htmlFor="name">
-              Username: 
+              Username:
             </label>
             <input
               id="name"
               type="text"
               value={username}
-              onChange={(e)=>{(e)=>{setUsername(e.target.value)}}}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your username"
             />
@@ -34,7 +44,9 @@ const Register = () => {
               id="email"
               type="email"
               value={email}
-              onChange={(e)=>{setEmail(e.target.value)}}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your email"
             />
@@ -48,7 +60,9 @@ const Register = () => {
               id="password"
               type="password"
               value={password}
-              onChange={(e)=>{setPassword(e.target.value)}}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your password"
             />

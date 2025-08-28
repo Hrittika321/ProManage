@@ -1,7 +1,8 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState ,useEffect} from "react";
 
 // users=[
 //   {
+//     id:
 //     username:
 //     email:
 //     password:
@@ -30,10 +31,11 @@ export const UserProvider = ({ children }) => {
   const addUser = (user) => {
     setUsers((prev) => [...prev, user]);
   };
-  
-  const findUser = (email) => {
-    const user = users.filter((user) => user.email === email);
-    return user;
+
+  const findUser = (email,password) => {
+    const user = users.filter((user) => user.email === email && user.password===password);
+    
+    return user.length===0?false:true;
   };
 
   return (

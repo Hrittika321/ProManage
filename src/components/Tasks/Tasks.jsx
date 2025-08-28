@@ -27,7 +27,7 @@ export default function Tasks() {
                 <h3 className="text-xl font-semibold">{task.title}</h3>
                 {task.type !== "Completed" && (
                   <button
-                    className="bg-green-500 hover:bg-green-600 text-white text-sm px-3 py-1 rounded"
+                    className="bg-green-300 hover:bg-green-600 text-black text-sm px-3 py-1 rounded"
                     onClick={() => handleChange(task.id)}
                   >
                     Done
