@@ -1,6 +1,16 @@
-import { NavLink, Outlet } from "react-router";
+import { useEffect, useState } from "react";
+import { NavLink, Outlet, useLocation } from "react-router";
 
 function Landing() {
+  const location = useLocation();
+  const [login, setLogin] = useState(false);
+  const [register, setRegister] = useState(false);
+
+  useEffect(() => {
+    setLogin(location.pathname.includes("login"));
+    setRegister(location.pathname.includes("register"));
+  }, [location.pathname]); 
+
   return (
     <div className="fixed inset-0 h-screen w-screen bg-[url('./assets/landing_bg.jpg')] bg-cover bg-center">
       <div className="flex h-full w-full">
@@ -12,24 +22,27 @@ function Landing() {
               </h1>
               <div className="space-x-6 pr-10">
                 
-                <button className="px-6 py-3 text-lg font-semibold rounded-xl bg-blue-800 text-white hover:bg-blue-900 shadow-md">
-                  <NavLink to="/landing/register">Register</NavLink>
-                </button>
-                <button className="px-6 py-3 text-lg font-semibold rounded-xl bg-amber-50 border-2 border-blue-800 text-blue-800 hover:bg-blue-100 shadow-md">
-                  <NavLink to="/landing/login">Login</NavLink>
-                </button>
+                {!register && (
+                  <button className="px-6 py-3 text-lg font-semibold rounded-xl bg-blue-800 text-white hover:bg-blue-900 shadow-md">
+                    <NavLink to="/landing/register">Register</NavLink>
+                  </button>
+                )}
+                
+                {!login && (
+                  <button className="px-6 py-3 text-lg font-semibold rounded-xl bg-amber-50 border-2 border-blue-800 text-blue-800 hover:bg-blue-100 shadow-md">
+                    <NavLink to="/landing/login">Login</NavLink>
+                  </button>
+                )}
               </div>
             </div>
           </div>
-          <div className="flex justify-centre align-middle flex-7">
+          <div className="flex justify-center items-center flex-7">
             <Outlet />
           </div>
         </div>
       </div>
-      ;
     </div>
   );
 }
 
 export default Landing;
-
