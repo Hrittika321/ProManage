@@ -9,7 +9,6 @@ function Layout() {
     <>
       <Header />
       <div className="flex flex-row gap-5 h-209">
-        
         <div className="w-64">
           <Sidebar />
         </div>

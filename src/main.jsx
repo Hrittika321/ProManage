@@ -22,6 +22,8 @@ import Register from "./components/Landing/Register.jsx";
 
 import { TaskProvider } from "./context/TaskContext.jsx";
 import { UserProvider } from "./context/UserContext.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,7 +47,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <TaskProvider>
       <UserProvider>
-        <RouterProvider router={router} />
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
       </UserProvider>
     </TaskProvider>
   </StrictMode>

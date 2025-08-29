@@ -1,5 +1,6 @@
 import React from "react";
 import { useUsers } from "../../context/UserContext";
+import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -7,11 +8,15 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setIsAuthenticated } = useAuth();
 
   const { findUser } = useUsers();
 
   const onclickHandler = () => {
-    findUser(email,password)?navigate("/"):navigate("/landing/register");
+    if (findUser(email, password)) {
+      setIsAuthenticated(true);
+      navigate("/");
+    } else navigate("/landing/register");
   };
 
   return (

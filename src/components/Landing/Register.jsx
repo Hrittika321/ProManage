@@ -12,7 +12,7 @@ const Register = () => {
   
   const onclickHandler = () => {
     addUser({ id: Date.now(), username, email, password });
-    navigate("/");
+    navigate("/landing/login");
   };
 
   return (
