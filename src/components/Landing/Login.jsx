@@ -1,6 +1,4 @@
-import React from "react";
 import { useUsers } from "../../context/UserContext";
-import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -8,15 +6,19 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setIsAuthenticated } = useAuth();
 
-  const { findUser } = useUsers();
+  const { findUser, updateUser } = useUsers();
 
   const onclickHandler = () => {
-    if (findUser(email, password)) {
-      setIsAuthenticated(true);
+    const user = findUser(email, password);
+    if (user.length !== 0) {
+      updateUser(user[0]);
+      alert("User successfully Logged In.")
       navigate("/");
-    } else navigate("/landing/register");
+    } else {
+      alert("New User. Register first.")
+      navigate("/landing/register");
+    }
   };
 
   return (

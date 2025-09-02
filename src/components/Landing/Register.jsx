@@ -9,9 +9,15 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const { addUser } = useUsers();
-  
+
   const onclickHandler = () => {
-    addUser({ id: Date.now(), username, email, password });
+    addUser({
+      id: Date.now(),
+      username,
+      email,
+      password,
+      isAuthenticated: false,
+    });
     navigate("/landing/login");
   };
 

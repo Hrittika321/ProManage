@@ -1,4 +1,4 @@
-import { createContext, useContext, useState ,useEffect} from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 // users=[
 //   {
@@ -6,6 +6,7 @@ import { createContext, useContext, useState ,useEffect} from "react";
 //     username:
 //     email:
 //     password:
+//     isAuthenticated:
 //   }
 // ]
 
@@ -32,14 +33,24 @@ export const UserProvider = ({ children }) => {
     setUsers((prev) => [...prev, user]);
   };
 
-  const findUser = (email,password) => {
-    const user = users.filter((user) => user.email === email && user.password===password);
-    
-    return user.length===0?false:true;
+  const findUser = (email, password) => {
+    const user = users.filter(
+      (user) => user.email === email && user.password === password
+    );
+    return user;
+  };
+
+  const updateUser = (newUser) => {//newUser is an object with the details of the user loggid in
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const updatedUsers = users.map(user =>
+    user.id === newUser.id ? { ...user, isAuthenticated: true } : user)
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
   };
 
   return (
-    <UserContext.Provider value={{ users, setUsers, addUser, findUser }}>
+    <UserContext.Provider
+      value={{ users, setUsers, addUser, findUser, updateUser }}
+    >
       {children}
     </UserContext.Provider>
   );
