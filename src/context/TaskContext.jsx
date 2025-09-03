@@ -3,13 +3,19 @@ import { back, ice } from "../constants";
 
 export const TaskContext = createContext();
 
-//Provider code
+// {
+//   id: 1756293410144,
+//   title: "",
+//   description: "",
+//   type: "Completed"
+// }
 
+//Provider code
 export function TaskProvider({ children }) {
   //anything under this provider section gets access of the TaskContext
   const [tasks, setTasks] = useState(() => {
     const storedTasks = localStorage.getItem("tasks");
-    return storedTasks? JSON.parse(storedTasks) : [];
+    return storedTasks ? JSON.parse(storedTasks) : [];
   });
 
   useEffect(() => {
@@ -27,8 +33,22 @@ export function TaskProvider({ children }) {
     setTasks((prev) => [...prev, task]);
   };
 
-  const editTask = (id, newtask) => {
-    setTasks((prev) => prev.map((task) => (task.id === id ? newtask : task)));
+  const editTask = (id) => {
+    console.log(id);
+    
+    const newTask = { id };
+    updateTask(newTask);
+  };
+
+  const updateTask = (newTask) => {
+    //newTask = {id : id, title: New title, description:New description}
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const updatedTasks = tasks.map((task) =>
+      task.id === newTask.id
+        ? { ...task, title: newTask.title, description: newTask.description }
+        : task
+    );
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   const deleteTask = (id) => {
@@ -36,20 +56,20 @@ export function TaskProvider({ children }) {
   };
 
   const toggleComplete = (id) => {
-  setTasks((prev) =>
-    prev.map((task) => {
-      if (task.id === id) {
-        if (task.type === ice ) return { ...task, type: "Backlog" };
-        else if (task.type === back) return { ...task, type: "Current" };
-        else return { ...task, type: "Completed" };
-      }
-      return task;
-    })
-  );
-};
+    setTasks((prev) =>
+      prev.map((task) => {
+        if (task.id === id) {
+          if (task.type === ice) return { ...task, type: "Backlog" };
+          else if (task.type === back) return { ...task, type: "Current" };
+          else return { ...task, type: "Completed" };
+        }
+        return task;
+      })
+    );
+  };
   return (
     <TaskContext.Provider
-      value={{ tasks, setTasks, addTask, editTask,deleteTask, toggleComplete }}
+      value={{ tasks, setTasks, addTask, editTask, deleteTask, toggleComplete }}
     >
       {children}
     </TaskContext.Provider>

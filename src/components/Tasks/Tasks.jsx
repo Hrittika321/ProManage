@@ -1,7 +1,7 @@
 import { useTasks } from "../../context/TaskContext";
 
 export default function Tasks() {
-  const { tasks, setTasks, addTask, ediTask, deleteTask, toggleComplete } =
+  const { tasks, setTasks, addTask, editTask, deleteTask, toggleComplete } =
     useTasks();
 
   const handleChange = (id) => {
@@ -51,7 +51,7 @@ export default function Tasks() {
               </span>
 
               <div className="flex justify-between text-sm mt-4">
-                <button className="text-blue-500 hover:underline">Edit</button>
+                <button className="text-blue-500 hover:underline" onClick={()=> editTask(task.id)}>Edit</button>
                 <button
                   className="text-red-500 hover:underline"
                   onClick={() => deleteTask(task.id)}
