@@ -33,22 +33,12 @@ export function TaskProvider({ children }) {
     setTasks((prev) => [...prev, task]);
   };
 
-  const editTask = (id) => {
-    console.log(id);
-    
-    const newTask = { id };
-    updateTask(newTask);
-  };
-
-  const updateTask = (newTask) => {
-    //newTask = {id : id, title: New title, description:New description}
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    const updatedTasks = tasks.map((task) =>
-      task.id === newTask.id
-        ? { ...task, title: newTask.title, description: newTask.description }
-        : task
+  const editTask = (id, updatedFields) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, ...updatedFields } : task
+      )
     );
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   const deleteTask = (id) => {
