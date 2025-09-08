@@ -25,7 +25,7 @@ export default function Tasks() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="h-full bg-gray-100 p-8">
       <h2 className="text-3xl font-bold text-center mb-8 text-blue-600">
         All Tasks
       </h2>
@@ -40,7 +40,6 @@ export default function Tasks() {
               className="bg-white rounded-2xl shadow-md p-6 border border-gray-200"
             >
               {editingId === task.id ? (
-                // ---- Edit Mode ----
                 <div>
                   <input
                     type="text"
@@ -68,7 +67,6 @@ export default function Tasks() {
                   </button>
                 </div>
               ) : (
-                // ---- Normal View ----
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl font-semibold">{task.title}</h3>
