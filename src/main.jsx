@@ -22,22 +22,24 @@ import Register from "./components/Landing/Register.jsx";
 
 import { TaskProvider } from "./context/TaskContext.jsx";
 import { UserProvider } from "./context/UserContext.jsx";
+import MainLayout from "./MainLayout.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    
-    <Route path="/" element={<Layout />}>
+    <Route path="/" element={<MainLayout/>}>
       <Route path="landing" element={<Landing />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Route>
-      <Route path="" element={<Body />} />
-      <Route path="about" element={<About />} />
-      <Route path="tasks" element={<Tasks />} />
-      <Route path="contact" element={<Contact />} />
-      <Route path="help" element={<Help />} />
-      <Route path="form" element={<AddTaskForm />} />
-      <Route path="profile" element={<Profile />} />
+      <Route path="/home" element={<Layout />}>
+        <Route path="/home" element={<Body />} />
+        <Route path="/home/about" element={<About />} />
+        <Route path="/home/tasks" element={<Tasks />} />
+        <Route path="/home/contact" element={<Contact />} />
+        <Route path="/home/help" element={<Help />} />
+        <Route path="/home/form" element={<AddTaskForm />} />
+        <Route path="/home/profile" element={<Profile />} />
+      </Route>
     </Route>
   )
 );
@@ -46,7 +48,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <TaskProvider>
       <UserProvider>
-          <RouterProvider router={router} />
+        <RouterProvider router={router} />
       </UserProvider>
     </TaskProvider>
   </StrictMode>

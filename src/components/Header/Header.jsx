@@ -10,10 +10,10 @@ function Header() {
         </div>
         <div className="space-x-4">
           <button className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">
-            <NavLink to="/form">+ Add Task</NavLink>
+            <NavLink to="/home/form">+ Add Task</NavLink>
           </button>
           <button className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
-            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/home/profile">Profile</NavLink>
           </button>
         </div>
       </header>

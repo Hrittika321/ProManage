@@ -8,7 +8,8 @@ export default function Sidebar() {
         <h2 className="text-2xl font-bold mb-20">Find your way</h2>
         <nav className="flex flex-col space-y-10">
           <NavLink
-            to="/"
+            to="/home"
+            end
             className={({ isActive }) =>
               `px-3 py-4 rounded transition-colors ${
                 isActive
@@ -20,7 +21,7 @@ export default function Sidebar() {
             Home
           </NavLink>
           <NavLink
-            to="/about"
+            to="/home/about"
             className={({ isActive }) =>
               `px-3 py-4 rounded transition-colors ${
                 isActive
@@ -32,7 +33,7 @@ export default function Sidebar() {
             About
           </NavLink>
           <NavLink
-            to="/tasks"
+            to="/home/tasks"
             className={({ isActive }) =>
               `px-3 py-4 rounded transition-colors ${
                 isActive
@@ -44,7 +45,7 @@ export default function Sidebar() {
             Tasks
           </NavLink>
           <NavLink
-            to="/contact"
+            to="/home/contact"
             className={({ isActive }) =>
               `px-3 py-4 rounded transition-colors ${
                 isActive
@@ -56,7 +57,7 @@ export default function Sidebar() {
             Contact
           </NavLink>
           <NavLink
-            to="/help"
+            to="/home/help"
             className={({ isActive }) =>
               `px-3 py-4 rounded transition-colors ${
                 isActive

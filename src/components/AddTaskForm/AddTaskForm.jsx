@@ -17,7 +17,7 @@ export default function AddTaskForm() {
     setTitle("");
     setDescription("");
     setType("");
-    navigate("/tasks")
+    navigate("/home/tasks")
   }
 
   return (
@@ -55,17 +55,6 @@ export default function AddTaskForm() {
             onChange={(e) => setDescription(e.target.value)}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          {/* <label
-            htmlFor="task-specification"
-            className="block text-lg font-semibold mb-2"
-          >
-            Task Specifications:{" "}
-          </label>
-          <textarea
-            id="task-specification"
-            placeholder="Task Specifications"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          /> */}
           <ul>
             <label className="block text-lg font-semibold mb-2">
               Task Type:
