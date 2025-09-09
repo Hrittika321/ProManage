@@ -1,7 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router";
+import { useAuth } from "../../context/AuthContext";
 
 function Header() {
+  const { logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+  };
   return (
     <>
       <header className="w-full bg-white shadow-md px-6 py-4 flex items-center justify-between">
@@ -13,7 +18,9 @@ function Header() {
             <NavLink to="/home/form">+ Add Task</NavLink>
           </button>
           <button className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
-            <NavLink to="/home/profile">Profile</NavLink>
+            <NavLink to="/landing/login" onClick={handleLogout}>
+              Logout
+            </NavLink>
           </button>
         </div>
       </header>

@@ -23,15 +23,24 @@ import Register from "./components/Landing/Register.jsx";
 import { TaskProvider } from "./context/TaskContext.jsx";
 import { UserProvider } from "./context/UserContext.jsx";
 import MainLayout from "./MainLayout.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<MainLayout/>}>
+    <Route path="/" element={<MainLayout />}>
       <Route path="landing" element={<Landing />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Route>
-      <Route path="/home" element={<Layout />}>
+      <Route
+        path="/home"
+        element={
+          <ProtectedRoute>
+            <Layout />
+          </ProtectedRoute>
+        }
+      >
         <Route path="/home" element={<Body />} />
         <Route path="/home/about" element={<About />} />
         <Route path="/home/tasks" element={<Tasks />} />
@@ -48,7 +57,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <TaskProvider>
       <UserProvider>
-        <RouterProvider router={router} />
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
       </UserProvider>
     </TaskProvider>
   </StrictMode>
