@@ -14,7 +14,7 @@ const Login = () => {
     const user = findUser(email, password);
     if (user.length !== 0) {
       updateUser(user[0]);
-      login();
+      // login();
       alert("User successfully Logged In.");
       navigate("/home");
     } else {
