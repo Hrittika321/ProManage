@@ -8,7 +8,7 @@ function Header() {
   const handleLogout = (e) => {
     e.preventDefault();
     logout();
-    navigate("/landing/login");
+    navigate("/login");
   };
   return (
     <>

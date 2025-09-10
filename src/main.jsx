@@ -29,7 +29,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>
-      <Route path="landing" element={<Landing />}>
+      <Route path="" element={<Landing />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Route>

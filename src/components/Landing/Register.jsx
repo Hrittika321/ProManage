@@ -17,7 +17,7 @@ const Register = () => {
       email,
       password,
     });
-    navigate("/landing/login");
+    navigate("/login");
   };
 
   return (
@@ -83,7 +83,7 @@ const Register = () => {
 
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <a href="/landing/login" className="text-blue-600 hover:underline">
+          <a href="/login" className="text-blue-600 hover:underline">
             Login
           </a>
         </p>

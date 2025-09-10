@@ -19,10 +19,12 @@ const Login = () => {
       navigate("/home");
     } else {
       alert("New User. Register first.");
-      navigate("/landing/register");
+      navigate("/register");
     }
   };
 
+
+  
   return (
     <div className=" h-full w-400 flex items-center justify-baseline ml-40">
       <div className="h-auto w-120 bg-white  p-8 rounded shadow-md">
@@ -70,7 +72,7 @@ const Login = () => {
 
         <p className="mt-4 text-center text-sm text-gray-600">
           Don't have an account?{" "}
-          <a href="/landing/register" className="text-blue-600 hover:underline">
+          <a href="/register" className="text-blue-600 hover:underline">
             Register
           </a>
         </p>
