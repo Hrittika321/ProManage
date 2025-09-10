@@ -7,14 +7,14 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { findUser, updateUser } = useUsers();
+  const { findUser } = useUsers();
   const { login } = useAuth();
 
-  const onclickHandler = () => {
+  const onclickHandler = (e) => {
+    e.preventDefault();
     const user = findUser(email, password);
     if (user.length !== 0) {
-      updateUser(user[0]);
-      // login();
+      login();
       alert("User successfully Logged In.");
       navigate("/home");
     } else {
@@ -28,7 +28,7 @@ const Login = () => {
       <div className="h-auto w-120 bg-white  p-8 rounded shadow-md">
         <h2 className="text-3xl font-bold mb-6 text-center">Login</h2>
 
-        <form>
+        <form onSubmit={onclickHandler}>
           <div className="mb-4">
             <label className="block text-gray-700 mb-2" htmlFor="email">
               Email:
@@ -62,7 +62,6 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            onClick={onclickHandler}
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 transition duration-200"
           >
             Sign In

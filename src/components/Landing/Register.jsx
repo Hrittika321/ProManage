@@ -16,7 +16,6 @@ const Register = () => {
       username,
       email,
       password,
-      isAuthenticated: false,
     });
     navigate("/landing/login");
   };

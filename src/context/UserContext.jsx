@@ -6,7 +6,6 @@ import { createContext, useContext, useState, useEffect } from "react";
 //     username:
 //     email:
 //     password:
-//     isAuthenticated:
 //   }
 // ]
 
@@ -40,16 +39,16 @@ export const UserProvider = ({ children }) => {
     return user;
   };
 
-  const updateUser = (newUser) => {//newUser is an object with the details of the user loggid in
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const updatedUsers = users.map(user =>
-    user.id === newUser.id ? { ...user, isAuthenticated: true } : user)
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-  };
+  // const updateUser = (newUser) => {//newUser is an object with the details of the user loggid in
+  //   const users = JSON.parse(localStorage.getItem("users")) || [];
+  //   const updatedUsers = users.map(user =>
+  //   user.id === newUser.id ? { ...user, isAuthenticated: true } : user)
+  //   localStorage.setItem("users", JSON.stringify(updatedUsers));
+  // };
 
   return (
     <UserContext.Provider
-      value={{ users, setUsers, addUser, findUser, updateUser }}
+      value={{ users, setUsers, addUser, findUser }}
     >
       {children}
     </UserContext.Provider>

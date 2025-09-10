@@ -1,11 +1,14 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { useNavigate, NavLink } from "react-router";
 import { useAuth } from "../../context/AuthContext";
 
 function Header() {
+  const navigate = useNavigate();
   const { logout } = useAuth();
-  const handleLogout = () => {
+  const handleLogout = (e) => {
+    e.preventDefault();
     logout();
+    navigate("/landing/login");
   };
   return (
     <>
@@ -17,10 +20,11 @@ function Header() {
           <button className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">
             <NavLink to="/home/form">+ Add Task</NavLink>
           </button>
-          <button className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
-            <NavLink to="/landing/login" onClick={handleLogout}>
-              Logout
-            </NavLink>
+          <button
+            className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+            onClick={handleLogout}
+          >
+            Logout
           </button>
         </div>
       </header>
