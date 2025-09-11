@@ -12,12 +12,7 @@ function Layout() {
           <Header />
         </div>
         <div className="flex-1 flex flex-row gap-5">
-          <div className="w-30">
-            <Sidebar />
-          </div>
-          <div className="flex-1 flex flex-col flex-grow p-4 space-y-4">
             <Outlet />
-          </div>
         </div>
         <div className="h-13">
           <Footer />
