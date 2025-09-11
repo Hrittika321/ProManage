@@ -8,7 +8,7 @@ import {
 } from "react-router";
 import "./index.css";
 
-import Layout from "./Layout.jsx";
+import Layout from "./layouts/Layout.jsx";
 import Body from "./components/Body/Body.jsx";
 import About from "./components/About/About.jsx";
 import Landing from "./components/Landing/Landing.jsx";
@@ -22,7 +22,7 @@ import Register from "./components/Landing/Register.jsx";
 
 import { TaskProvider } from "./context/TaskContext.jsx";
 import { UserProvider } from "./context/UserContext.jsx";
-import MainLayout from "./MainLayout.jsx";
+import MainLayout from "./layouts/MainLayout.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 

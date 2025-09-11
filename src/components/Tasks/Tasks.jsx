@@ -1,17 +1,13 @@
 import { useState } from "react";
-import { back, com, ice } from "../../constants";
+import { back, com, ice, cur } from "../../constants"; 
 import { useTasks } from "../../context/TaskContext";
 
 export default function Tasks() {
-  const { tasks, editTask, deleteTask, toggleComplete } = useTasks();
-
+  const { tasks, editTask, deleteTask } = useTasks();
   const [editingId, setEditingId] = useState(null);
   const [editedTitle, setEditedTitle] = useState("");
   const [editedDesc, setEditedDesc] = useState("");
-
-  const handleChange = (id) => {
-    toggleComplete(id);
-  };
+  const [changeTypeId, setChangeTypeId] = useState(null);
 
   const handleEdit = (task) => {
     setEditingId(task.id);
@@ -24,8 +20,13 @@ export default function Tasks() {
     setEditingId(null);
   };
 
+  const handleTypeChange = (id, newType) => {
+    editTask(id, { type: newType });
+    setChangeTypeId(null); // close dropdown after selecting
+  };
+
   return (
-    <div className="h-full bg-gray-100 p-8">
+    <div className="h-full w-full bg-gray-100 p-8">
       <h2 className="text-3xl font-bold text-center mb-8 text-blue-600">
         All Tasks
       </h2>
@@ -70,12 +71,26 @@ export default function Tasks() {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl font-semibold">{task.title}</h3>
-                    {task.type !== "Completed" && (
+
+                    {changeTypeId === task.id ? (
+                      <select
+                        value={task.type}
+                        onChange={(e) =>
+                          handleTypeChange(task.id, e.target.value)
+                        }
+                        className="border p-1 rounded"
+                      >
+                        <option value={ice}>Icebreak</option>
+                        <option value={back}>Backlog</option>
+                        <option value={cur}>Current</option>
+                        <option value={com}>Completed</option>
+                      </select>
+                    ) : (
                       <button
                         className="bg-green-300 hover:bg-green-600 text-black text-sm px-3 py-1 rounded"
-                        onClick={() => handleChange(task.id)}
+                        onClick={() => setChangeTypeId(task.id)}
                       >
-                        Done
+                        Change Type
                       </button>
                     )}
                   </div>
