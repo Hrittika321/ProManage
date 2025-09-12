@@ -13,6 +13,9 @@ export const TaskContext = createContext();
 //Provider code
 export function TaskProvider({ children }) {
   //anything under this provider section gets access of the TaskContext
+
+  const [taskType, setTaskType] = useState(null);
+
   const [tasks, setTasks] = useState(() => {
     const storedTasks = localStorage.getItem("tasks");
     return storedTasks ? JSON.parse(storedTasks) : [];
@@ -59,7 +62,16 @@ export function TaskProvider({ children }) {
   };
   return (
     <TaskContext.Provider
-      value={{ tasks, setTasks, addTask, editTask, deleteTask, toggleComplete }}
+      value={{
+        taskType,
+        setTaskType,
+        tasks,
+        setTasks,
+        addTask,
+        editTask,
+        deleteTask,
+        toggleComplete,
+      }}
     >
       {children}
     </TaskContext.Provider>

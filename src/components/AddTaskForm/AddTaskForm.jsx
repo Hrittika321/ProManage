@@ -17,11 +17,11 @@ export default function AddTaskForm() {
     setTitle("");
     setDescription("");
     setType("");
-    navigate("/home/tasks")
+    navigate("/home")
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center h-screen w-screen bg-gray-100">
       <div className="bg-white p-8 rounded-2xl shadow-md  w-120">
         <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">
           Add New Task

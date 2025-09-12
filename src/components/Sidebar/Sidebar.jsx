@@ -33,18 +33,6 @@ export default function Sidebar() {
             About
           </NavLink>
           <NavLink
-            to="/home/tasks"
-            className={({ isActive }) =>
-              `px-3 py-4 rounded transition-colors ${
-                isActive
-                  ? "bg-blue-500 text-white"
-                  : "text-white hover:bg-blue-500"
-              }`
-            }
-          >
-            Tasks
-          </NavLink>
-          <NavLink
             to="/home/contact"
             className={({ isActive }) =>
               `px-3 py-4 rounded transition-colors ${

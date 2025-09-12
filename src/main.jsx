@@ -12,7 +12,6 @@ import Layout from "./layouts/Layout.jsx";
 import Body from "./components/Body/Body.jsx";
 import About from "./components/About/About.jsx";
 import Landing from "./components/Landing/Landing.jsx";
-import Tasks from "./components/Tasks/Tasks.jsx";
 import Contact from "./components/Contact/Contact.jsx";
 import Help from "./components/Help/Help.jsx";
 import AddTaskForm from "./components/AddTaskForm/AddTaskForm.jsx";
@@ -43,7 +42,6 @@ const router = createBrowserRouter(
       >
         <Route path="/home" element={<Body />} />
         <Route path="/home/about" element={<About />} />
-        <Route path="/home/tasks" element={<Tasks />} />
         <Route path="/home/contact" element={<Contact />} />
         <Route path="/home/help" element={<Help />} />
         <Route path="/home/form" element={<AddTaskForm />} />
