@@ -15,6 +15,7 @@ export function TaskProvider({ children }) {
   //anything under this provider section gets access of the TaskContext
 
   const [taskType, setTaskType] = useState(null);
+  const [showForm, setShowForm] = useState(false);
 
   const [tasks, setTasks] = useState(() => {
     const storedTasks = localStorage.getItem("tasks");
@@ -71,6 +72,8 @@ export function TaskProvider({ children }) {
         editTask,
         deleteTask,
         toggleComplete,
+        showForm,
+        setShowForm
       }}
     >
       {children}

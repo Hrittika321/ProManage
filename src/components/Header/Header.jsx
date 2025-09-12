@@ -1,9 +1,14 @@
 import React from "react";
 import { useNavigate, NavLink } from "react-router";
 import { useAuth } from "../../context/AuthContext";
+import { useState } from "react";
+import AddTaskForm from "../AddTaskForm/AddTaskForm";
+import { useTasks } from "../../context/TaskContext";
 
 function Header() {
   const navigate = useNavigate();
+  const { showForm, setShowForm } = useTasks();
+
   const { logout } = useAuth();
   const handleLogout = (e) => {
     e.preventDefault();
@@ -16,9 +21,31 @@ function Header() {
         Project-Management-App
       </div>
       <div className="space-x-4">
-        <button className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">
-          <NavLink to="/home/form">+ Add Task</NavLink>
+        <button
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
+          onClick={() => setShowForm(true)}
+        >
+          + Add Task
         </button>
+        {showForm && (
+          <div
+            className="fixed inset-0 bg-opacity-40 backdrop-blur-sm flex items-center justify-center z-50 h-screen w-screen"
+            onClick={() => setShowForm(false)}
+          >
+            <div
+              className="flex justify-center align-middle h-130 w-120 bg-white rounded-3xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <AddTaskForm onClose={() => setShowForm(false)} />
+              <button
+                onClick={() => setShowForm(false)}
+                className="absolute top-3 right-3 text-gray-600 hover:text-red-500"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
         <button
           className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
           onClick={handleLogout}
