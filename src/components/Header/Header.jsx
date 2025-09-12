@@ -39,7 +39,7 @@ function Header() {
               <AddTaskForm onClose={() => setShowForm(false)} />
               <button
                 onClick={() => setShowForm(false)}
-                className="absolute top-3 right-3 text-gray-600 hover:text-red-500"
+                className="absolute top-60 right-180 text-gray-600 hover:text-red-500"
               >
                 ✕
               </button>

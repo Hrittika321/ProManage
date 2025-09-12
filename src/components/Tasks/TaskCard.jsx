@@ -3,7 +3,7 @@ import { back, com, ice, cur } from "../../constants";
 import { useTasks } from "../../context/TaskContext";
 
 export default function TaskCard({ task }) {
-  const { tasks, editTask, deleteTask } = useTasks();
+  const { editTask, deleteTask } = useTasks();
   const [editingId, setEditingId] = useState(null);
   const [editedTitle, setEditedTitle] = useState("");
   const [editedDesc, setEditedDesc] = useState("");
@@ -22,7 +22,7 @@ export default function TaskCard({ task }) {
 
   const handleTypeChange = (id, newType) => {
     editTask(id, { type: newType });
-    setChangeTypeId(null);
+    setChangeTypeId();
   };
 
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import TaskCard from "../Tasks/TaskCrad";
+import TaskCard from "../Tasks/TaskCard";
 
 function ShowTasks({ type, taskArray, bgcolor }) {
   return (
