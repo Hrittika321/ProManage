@@ -10,7 +10,8 @@ const Register = () => {
 
   const { addUser } = useUsers();
 
-  const onclickHandler = () => {
+  const onsubmitHandler = () => {
+    
     addUser({
       id: Date.now(),
       username,
@@ -25,7 +26,7 @@ const Register = () => {
       <div className="h-auto w-120 bg-white  p-8 rounded shadow-md">
         <h2 className="text-3xl font-bold mb-6 text-center">Register</h2>
 
-        <form>
+        <form onSubmit={onsubmitHandler}>
           <div className="mb-4">
             <label className="block text-gray-700 mb-2" htmlFor="name">
               Username:
@@ -34,6 +35,7 @@ const Register = () => {
               id="name"
               type="text"
               value={username}
+              required
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
@@ -49,6 +51,7 @@ const Register = () => {
               id="email"
               type="email"
               value={email}
+              required
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
@@ -64,7 +67,9 @@ const Register = () => {
             <input
               id="password"
               type="password"
+              minLength={6}
               value={password}
+              required
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
@@ -74,7 +79,6 @@ const Register = () => {
           </div>
           <button
             type="submit"
-            onClick={onclickHandler}
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 transition duration-200"
           >
             Sign up
